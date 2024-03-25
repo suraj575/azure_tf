@@ -1,1 +1,11 @@
-name = "quant-dev"
+resource_group_name = "quant-rg-nonprod-pvts"
+location = "East US"
+cosmos_db_cluster_name = "cosmos-db-non-prod"
+availability_zones = ["1", "2"]
+enable_auto_scaling = true
+min_count = 1
+max_count = 3
+max_pods = 30
+kubernetes_cluster_name = "privateakscluster00121"
+backend_acr_name = "backendquantacr123"
+frontend_acr_name = "frontendquantacr123"

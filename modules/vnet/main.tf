@@ -1,22 +1,35 @@
-# Create virtual network
-resource "azurerm_virtual_network" "this" {
-  name                = var.vnet_name
-  address_space       = [var.address_space]
-  location            = azurerm_resource_group.this.location
-  resource_group_name = var.resource_group_name
+resource "azurerm_virtual_network" "aksvnet" {
+  name                = "adv_quant_nonprod_network"
+  location            = "East US "
+  resource_group_name = "quant-rg-nonprod"
+  address_space       = ["10.2.0.0/16"]
+   tags                    = {
+           env       = "nonprod" 
+           Name       = "adv_quant_nonprod_network" 
+           costcenter = "quant"
+        }
 }
-
-# Create subnets
-resource "azurerm_subnet" "public" {
-  name                 = "${var.vnet_name}-public-subnet"
-  resource_group_name  = var.resource_group_name
-  virtual_network_name = azurerm_virtual_network.this.name
-  address_prefixes     = [cidrsubnet(var.address_space, 8, 1)]
+resource "azurerm_subnet" "default" {
+  name                 = "default"
+  virtual_network_name = azurerm_virtual_network.aksvnet.name
+  resource_group_name  = "quant-rg-nonprod"
+  address_prefixes     = ["10.2.0.0/24"]
 }
-
-resource "azurerm_subnet" "private" {
-  name                 = "${var.vnet_name}-private-subnet"
-  resource_group_name  = var.resource_group_name
-  virtual_network_name = azurerm_virtual_network.this.name
-  address_prefixes     = [cidrsubnet(var.address_space, 8, 10)]
+resource "azurerm_subnet" "azure-firewall-subnet" {
+  name                 = "AzureFirewallSubnet"
+  virtual_network_name = azurerm_virtual_network.aksvnet.name
+  resource_group_name  = "quant-rg-nonprod"
+  address_prefixes     = ["10.2.1.64/26"]
+}
+resource "azurerm_subnet" "adv_quant_nonprod_subnet" {
+  name                 = "adv_quant_nonprod_subnet"
+  virtual_network_name = azurerm_virtual_network.aksvnet.name
+  resource_group_name  = "quant-rg-nonprod"
+  address_prefixes     = ["10.2.2.0/24"]
+}
+resource "azurerm_subnet" "azure-bastion-subnet" {
+  name                 = "AzureBastionSubnet"
+  virtual_network_name = azurerm_virtual_network.aksvnet.name
+  resource_group_name  = "quant-rg-nonprod"
+  address_prefixes     = ["10.2.1.0/26"]
 }

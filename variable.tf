@@ -32,28 +32,28 @@ variable "cosmos_db_cluster_name" {
 }
 
 variable "kubernetes_cluster_name" {
-  
+
 }
 
 variable "availability_zones" {
-  
+
 }
 variable "enable_auto_scaling" {
-  
+
 }
 variable "min_count" {
-  
+
 }
 variable "max_count" {
-  
+
 }
 variable "max_pods" {
-  
+
 }
 variable "backend_acr_name" {
-  
+
 }
 
 variable "frontend_acr_name" {
-  
+
 }

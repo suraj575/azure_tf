@@ -3,11 +3,11 @@ resource "azurerm_virtual_network" "aksvnet" {
   location            = "East US "
   resource_group_name = "quant-rg-nonprod"
   address_space       = ["10.2.0.0/16"]
-   tags                    = {
-           env       = "nonprod" 
-           Name       = "adv_quant_nonprod_network" 
-           costcenter = "quant"
-        }
+  tags = {
+    env        = "nonprod"
+    Name       = "adv_quant_nonprod_network"
+    costcenter = "quant"
+  }
 }
 resource "azurerm_subnet" "default" {
   name                 = "default"

@@ -63,7 +63,7 @@ resource "azurerm_container_registry" "frontend_acr" {
 }
 
 resource "azurerm_private_dns_zone" "frontend_acr_private_dns_zone" {
-  name                = "privatelink.azurecr.io"
+  name                = "frontend-privatelink.azurecr.io"
   resource_group_name = var.resource_group_name
 }
 

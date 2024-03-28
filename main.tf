@@ -42,3 +42,7 @@ module "acr" {
   frontend_acr_name   = var.frontend_acr_name
   vnet                = module.vnet.vnet
 }
+
+module "nginx" {
+  source = "./modules/nginx-ingress"
+}

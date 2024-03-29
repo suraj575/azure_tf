@@ -1,11 +1,14 @@
-resource "helm_release" "cert-manager" {
-  name             = "cm"
-  namespace        = "cert-manager"
-  create_namespace = false
-  chart            = "cert-manager"
+resource "helm_release" "cert_manager" {
+  name = "cert-manager"
+
   repository       = "https://charts.jetstack.io"
-  version          = "v1.5.3"
-  values = [
-     file("${path.module}/values.yaml")
-  ]
+  chart            = "cert-manager"
+  namespace        = "cert-manager"
+  create_namespace = true
+  version          = "v1.13.1"
+
+  set {
+    name  = "installCRDs"
+    value = "true"
+  }
 }

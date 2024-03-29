@@ -46,3 +46,7 @@ module "acr" {
 module "nginx" {
   source = "./modules/nginx-ingress"
 }
+
+module "cert-manager" {
+  source = "./modules/cert-manager"
+}

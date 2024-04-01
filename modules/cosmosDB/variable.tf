@@ -6,3 +6,7 @@ variable "resource_group_name" {
 
 variable "location" {
 }
+
+variable "pe_subnet" {
+  
+}

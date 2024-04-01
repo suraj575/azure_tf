@@ -1,0 +1,11 @@
+resource_group_name     = 
+location                = 
+cosmos_db_cluster_name  = 
+availability_zones      = 
+enable_auto_scaling     = 
+min_count               = 
+max_count               = 
+max_pods                = 
+kubernetes_cluster_name = 
+backend_acr_name        =
+frontend_acr_name       = 

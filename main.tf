@@ -3,14 +3,15 @@
 #   name     = var.resource_group_name
 # }
 
-# module "cosmos" 
-#   source = "./modules/cosmosDB"
+module "cosmos" {
+  source = "./modules/cosmosDB"
 
-#   cosmos_db_cluster_name = var.cosmos_db_cluster_name
-#   resource_group_name = azurerm_resource_group.this.name
-#   location = azurerm_resource_group.this.location
+  cosmos_db_cluster_name = var.cosmos_db_cluster_name
+  resource_group_name    = "quant-rg-nonprod" //azurerm_resource_group.this.name
+  location               = "East US"          //azurerm_resource_group.this.location
+  pe_subnet              = module.vnet.pe_subnet
 
-# }
+}
 
 module "aks" {
   source = "./modules/aks"

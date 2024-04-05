@@ -1,10 +1,14 @@
 output "aks_nonprod_subnet" {
-  value = azurerm_subnet.adv_quant_nonprod_subnet.id
+  value = azurerm_subnet.app-subnet-01.id
+}
+output "aks_nonprod_subnet-2" {
+  value = azurerm_subnet.app-subnet-02.id
 }
 
+
 output "pe_subnet" {
-  value = azurerm_subnet.default.id
+  value = azurerm_subnet.pe-subnet.id
 }
 output "vnet" {
-  value = azurerm_virtual_network.aksvnet.id
+  value = azurerm_virtual_network.quantvnet.id
 }

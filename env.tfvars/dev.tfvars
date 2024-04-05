@@ -1,11 +1,11 @@
-resource_group_name     = "quant-rg-nonprod-pvts"
+resource_group_name     = "inizio_adv_dev"
 location                = "East US"
-cosmos_db_cluster_name  = "cosmos-db-non-prod"
+cosmos_db_cluster_name  = "quant-dev-db"
 availability_zones      = ["1", "2"]
 enable_auto_scaling     = true
 min_count               = 1
 max_count               = 3
 max_pods                = 30
-kubernetes_cluster_name = "privateakscluster00121"
-backend_acr_name        = "backendquantacr123"
-frontend_acr_name       = "frontendquantacr123"
+kubernetes_cluster_name = "quantdevaks121"
+acr_name                = "quantdevacr121"
+node_pool_name          = "default"

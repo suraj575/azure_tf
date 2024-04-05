@@ -6,16 +6,24 @@ resource "azurerm_kubernetes_cluster" "kubernetes_cluster" {
   dns_prefix                        = var.kubernetes_cluster_name
   private_cluster_enabled           = true
   role_based_access_control_enabled = true
+  tags = {
+    env        = "${terraform.workspace}"
+    cost_center = "quant"
+  }
   default_node_pool {
-    name                = "system"
+    name                = var.node_pool_name
     node_count          = 1
-    vm_size             = "Standard_DS2_v2"
+    vm_size             = "Standard_D2s_v3"
     vnet_subnet_id      = var.subnet_id
     max_pods            = var.max_pods
     zones               = var.availability_zones
     enable_auto_scaling = var.enable_auto_scaling
     min_count           = var.min_count
     max_count           = var.max_count
+    tags = {
+      env        = "${terraform.workspace}"
+      cost_center = "quant"
+  }
 
   }
   network_profile {

@@ -24,3 +24,6 @@ variable "max_pods" {
 variable "subnet_id" {
 
 }
+variable "node_pool_name" {
+  
+}

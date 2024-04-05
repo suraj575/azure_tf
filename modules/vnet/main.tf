@@ -1,35 +1,38 @@
-resource "azurerm_virtual_network" "aksvnet" {
-  name                = "adv_quant_nonprod_network"
+resource "azurerm_virtual_network" "quantvnet" {
+  name                = "quant_adv_dev"
   location            = "East US "
-  resource_group_name = "quant-rg-nonprod"
-  address_space       = ["10.2.0.0/16"]
+  resource_group_name = "inizio_adv_dev"
+  address_space       = ["10.200.0.0/20"]
   tags = {
-    env        = "nonprod"
-    Name       = "adv_quant_nonprod_network"
-    costcenter = "quant"
+    env        = "${terraform.workspace}"
+    cost_center = "quant"
   }
 }
-resource "azurerm_subnet" "default" {
-  name                 = "default"
-  virtual_network_name = azurerm_virtual_network.aksvnet.name
-  resource_group_name  = "quant-rg-nonprod"
-  address_prefixes     = ["10.2.0.0/24"]
+resource "azurerm_subnet" "app-subnet-01" {
+  name                 = "app-subnet-01"
+  virtual_network_name = azurerm_virtual_network.quantvnet.name
+  resource_group_name  = "inizio_adv_dev"
+  address_prefixes     = ["10.200.2.0/24"]
+  service_endpoints    = ["Microsoft.Storage"]
 }
-resource "azurerm_subnet" "azure-firewall-subnet" {
-  name                 = "AzureFirewallSubnet"
-  virtual_network_name = azurerm_virtual_network.aksvnet.name
-  resource_group_name  = "quant-rg-nonprod"
-  address_prefixes     = ["10.2.1.64/26"]
+resource "azurerm_subnet" "app-subnet-02" {
+  name                 = "app-subnet-02"
+  virtual_network_name = azurerm_virtual_network.quantvnet.name
+  resource_group_name  = "inizio_adv_dev"
+  address_prefixes     = ["10.200.3.0/24"]
+  service_endpoints    = ["Microsoft.Storage"]
 }
-resource "azurerm_subnet" "adv_quant_nonprod_subnet" {
-  name                 = "adv_quant_nonprod_subnet"
-  virtual_network_name = azurerm_virtual_network.aksvnet.name
-  resource_group_name  = "quant-rg-nonprod"
-  address_prefixes     = ["10.2.2.0/24"]
+resource "azurerm_subnet" "pe-subnet" {
+  name                 = "pe-subnet"
+  virtual_network_name = azurerm_virtual_network.quantvnet.name
+  resource_group_name  = "inizio_adv_dev"
+  address_prefixes     = ["10.200.4.0/24"]
+  service_endpoints    = ["Microsoft.Storage"]
 }
-resource "azurerm_subnet" "azure-bastion-subnet" {
-  name                 = "AzureBastionSubnet"
-  virtual_network_name = azurerm_virtual_network.aksvnet.name
-  resource_group_name  = "quant-rg-nonprod"
-  address_prefixes     = ["10.2.1.0/26"]
+resource "azurerm_subnet" "quant_vnet_dev" {
+  name                 = "quant_vnet_dev"
+  virtual_network_name = azurerm_virtual_network.quantvnet.name
+  resource_group_name  = "inizio_adv_dev"
+  address_prefixes     = ["10.200.0.0/24"]
+  service_endpoints    = ["Microsoft.Storage"]
 }

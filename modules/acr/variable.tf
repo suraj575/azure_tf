@@ -1,5 +1,3 @@
-variable "backend_acr_name" {
-}
 
 variable "location" {
 }
@@ -16,6 +14,6 @@ variable "principal_id" {
 variable "vnet" {
 
 }
-variable "frontend_acr_name" {
+variable "acr_name" {
 
 }

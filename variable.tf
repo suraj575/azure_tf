@@ -50,10 +50,13 @@ variable "max_count" {
 variable "max_pods" {
 
 }
-variable "backend_acr_name" {
+variable "acr_name" {
 
 }
-
-variable "frontend_acr_name" {
-
+variable "node_pool_name" {
+  
 }
+
+# variable "frontend_acr_name" {
+
+# }

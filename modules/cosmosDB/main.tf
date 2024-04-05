@@ -20,6 +20,10 @@ resource "azurerm_cosmosdb_postgresql_cluster" "cosmos" {
    depends_on = [
     random_password.cosmosdb_postgresql_passwords
   ]
+  tags = {
+    env        = "${terraform.workspace}"
+    cost_center = "quant"
+  }
 
 }
 

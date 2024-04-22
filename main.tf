@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "this" {
   location = "East US"
-  name     = "inizio_adv_dev"
+  name     = "quant-rg-prod"
   tags = {
     env        = "${terraform.workspace}"
     cost_center = "quant"

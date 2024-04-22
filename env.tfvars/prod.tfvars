@@ -1,0 +1,11 @@
+resource_group_name     = "quant-rg-prod"
+location                = "East US"
+cosmos_db_cluster_name  = "quant-dev-prod"
+availability_zones      = ["1", "2"]
+enable_auto_scaling     = true
+min_count               = 1
+max_count               = 3
+max_pods                = 30
+kubernetes_cluster_name = "quantprodaks121"
+acr_name                = "quantprodacr121"
+node_pool_name          = "default"

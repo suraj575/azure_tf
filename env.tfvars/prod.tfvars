@@ -9,3 +9,4 @@ max_pods                = 30
 kubernetes_cluster_name = "quantprodaks121"
 acr_name                = "quantprodacr121"
 node_pool_name          = "default"
+storage_account_name    = "quantprodsa"

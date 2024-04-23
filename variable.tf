@@ -56,6 +56,9 @@ variable "acr_name" {
 variable "node_pool_name" {
   
 }
+variable "storage_account_name" {
+  
+}
 
 # variable "frontend_acr_name" {
 

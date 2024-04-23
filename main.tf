@@ -55,3 +55,13 @@ module "nginx" {
 module "cert-manager" {
   source = "./modules/cert-manager"
 }
+
+module "storage_account" {
+  source = "./modules/storage-account"
+
+  pe_subnet           = module.vnet.pe_subnet
+  resource_group_name = azurerm_resource_group.this.name
+  location            = azurerm_resource_group.this.location
+  vnet                = module.vnet.vnet
+  storage_account_name = var.storage_account_name
+}

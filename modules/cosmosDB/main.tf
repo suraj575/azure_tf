@@ -28,7 +28,7 @@ resource "azurerm_cosmosdb_postgresql_cluster" "cosmos" {
 }
 
 resource "azurerm_private_dns_zone" "cosmos" {
-  name                = "privatelink.postgreshsc.database.azure.com"
+  name                = "privatelink-postgres-cosmos-azure-com"
   resource_group_name = var.resource_group_name
 }
 

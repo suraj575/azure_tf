@@ -1,8 +1,8 @@
 terraform {
   backend "azurerm" {
-    subscription_id      = "a12ddeee-f964-4eff-9dc4-fb0fa49bacc2"
-    resource_group_name  = "quant-rg-prod"
-    storage_account_name = "prodtfstate00121"
+    subscription_id      = "2a09dde0-11d6-4209-970b-abbee9d5cc80"
+    resource_group_name  = "quant_prod"
+    storage_account_name = "stgtfprod"
     container_name       = "tfstate"
     key                  = "terraform.tfstate"
   }
